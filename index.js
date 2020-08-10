@@ -1,1 +1,1 @@
-export * from "dist/glscope.bundle.js";
+module.exports = require('dist/glscope.bundle.js');
