@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   entry: {
     'glscope': './src/glscope.ts',
+    'main': './src/main.ts'
   },
   mode: "development",
   module: {
