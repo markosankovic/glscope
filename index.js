@@ -1,1 +1,1 @@
-console.log('glscope');
+export * from "dist/glscope.bundle.js";
