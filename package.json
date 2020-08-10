@@ -1,0 +1,23 @@
+{
+  "name": "glscope",
+  "version": "0.0.2",
+  "description": "WebGL Oscilloscope",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markosankovic/glscope.git"
+  },
+  "keywords": [
+    "webgl",
+    "oscilloscope"
+  ],
+  "author": "Marko Sanković <msankovic@synapticon.com> (https://github.com/markosankovic)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markosankovic/glscope/issues"
+  },
+  "homepage": "https://github.com/markosankovic/glscope#readme"
+}
