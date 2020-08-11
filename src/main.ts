@@ -1,10 +1,17 @@
 import { Glscope } from './glscope';
 
-let xRangeMinInput: HTMLInputElement;
-let xRangeMaxInput: HTMLInputElement;
+import * as dat from 'dat.gui';
 
-let yRangeMinInput: HTMLInputElement;
-let yRangeMaxInput: HTMLInputElement;
+const gui = new dat.GUI({
+  name: 'glscope',
+});
+
+const config = {
+  xRangeMin: 0,
+  xRangeMax: 50000,
+  yRangeMin: -1000,
+  yRangeMax: 1000,
+};
 
 const canvas = document.querySelector('canvas');
 
@@ -15,17 +22,17 @@ if (canvas) {
   window.onload = () => {
     glscope.init();
 
-    xRangeMinInput = document.querySelector('input[name="xRangeMin"]') as HTMLInputElement;
-    xRangeMaxInput = document.querySelector('input[name="xRangeMax"]') as HTMLInputElement;
+    gui.add(config, 'xRangeMin', 0, 50000)
+      .onChange(_ => glscope.xRange = [config.xRangeMin, config.xRangeMax]);
 
-    xRangeMinInput.addEventListener('change', () => glscope.xRange = [parseInt(xRangeMinInput!.value, 10), parseInt(xRangeMaxInput!.value, 10)]);
-    xRangeMaxInput.addEventListener('change', () => glscope.xRange = [parseInt(xRangeMinInput!.value, 10), parseInt(xRangeMaxInput!.value, 10)]);
+    gui.add(config, 'xRangeMax', 0, 50000)
+      .onChange(_ => glscope.xRange = [config.xRangeMin, config.xRangeMax]);
 
-    yRangeMinInput = document.querySelector('input[name="yRangeMin"]') as HTMLInputElement;
-    yRangeMaxInput = document.querySelector('input[name="yRangeMax"]') as HTMLInputElement;
+    gui.add(config, 'yRangeMin', -1000, 1000)
+      .onChange(_ => glscope.yRange = [config.yRangeMin, config.yRangeMax]);
 
-    yRangeMinInput.addEventListener('change', () => glscope.yRange = [parseInt(yRangeMinInput!.value, 10), parseInt(yRangeMaxInput!.value, 10)]);
-    yRangeMaxInput.addEventListener('change', () => glscope.yRange = [parseInt(yRangeMinInput!.value, 10), parseInt(yRangeMaxInput!.value, 10)]);
+    gui.add(config, 'yRangeMax', -1000, 1000)
+      .onChange(_ => glscope.yRange = [config.yRangeMin, config.yRangeMax]);
 
   };
 

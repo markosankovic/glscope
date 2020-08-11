@@ -23,10 +23,14 @@
   },
   "homepage": "https://github.com/markosankovic/glscope#readme",
   "devDependencies": {
+    "@types/dat.gui": "^0.7.5",
     "@types/node": "^14.0.27",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.7"
   }
 }
