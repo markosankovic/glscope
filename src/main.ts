@@ -28,6 +28,10 @@ const sineWave = {
   frequency: 0.01,
 };
 
+const squareWave = {
+  amplitude: 250,
+};
+
 const canvas = document.querySelector('canvas');
 
 if (canvas) {
@@ -40,14 +44,21 @@ if (canvas) {
   const sineWaveSignal: GlscopeSignal = { color: [1.0, 0.0, 0.5, 1.0], data: [] };
   glscope.addSignal(sineWaveSignal);
 
+  const squareWaveSignal: GlscopeSignal = { color: [0.5, 1.0, 0.2, 1.0], data: [] };
+  glscope.addSignal(squareWaveSignal);
+
   let sineWaveIncrement = sineWave.frequency;
   const tx = Date.now();
 
   function loop() {
     const time = Date.now();
-    const amplitude = Math.sin(time * sineWave.length + sineWaveIncrement) * sineWave.amplitude;
-    glscope.addData(0, time - tx, amplitude);
+
+    const sineWaveAmplitude = Math.sin(time * sineWave.length + sineWaveIncrement) * sineWave.amplitude;
+    glscope.addData(0, time - tx, sineWaveAmplitude);
     sineWaveIncrement += sineWave.frequency;
+
+    glscope.addData(1, (time - tx), squareWave.amplitude);
+
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
@@ -70,6 +81,10 @@ if (canvas) {
     sineWaveFolder.add(sineWave, 'amplitude', -1000, 1000);
     sineWaveFolder.add(sineWave, 'frequency', -0.01, 1);
     sineWaveFolder.open();
+
+    const squareWaveFolder = gui.addFolder('Square wave');
+    squareWaveFolder.add(squareWave, 'amplitude', -1000, 1000);
+    squareWaveFolder.open();
 
   };
 
