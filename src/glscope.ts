@@ -72,7 +72,11 @@ export class Glscope {
   private signals: GlscopeSignal[] = [];
 
   constructor(canvas: HTMLCanvasElement) {
-    const gl = canvas.getContext('webgl2', { antialias: true });
+    const gl = canvas.getContext('webgl2', {
+      alpha: false,
+      antialias: false,
+    });
+
     if (gl) {
       this.gl = gl;
     } else {
