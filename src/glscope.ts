@@ -82,6 +82,12 @@ export class Glscope {
     } else {
       throw new Error('Cannot get webgl2 context from canvas.');
     }
+
+    gl.canvas.addEventListener('mousemove', (ev: any) => {
+      const x = ev.clientX;
+      const out = this.signals.map(signal => [signal.data[x * 2], signal.data[x * 2 + 1]]);
+      console.log(JSON.stringify(out));
+    });
   }
 
   get scale() {

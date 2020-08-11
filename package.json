@@ -31,6 +31,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "dat.gui": "^0.7.7"
+    "dat.gui": "^0.7.7",
+    "rxjs": "^6.6.2"
   }
 }
