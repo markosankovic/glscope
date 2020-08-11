@@ -84,9 +84,15 @@ export class Glscope {
     }
 
     gl.canvas.addEventListener('mousemove', (ev: any) => {
-      const x = ev.clientX;
+      const x: number = ev.clientX;
       const out = this.signals.map(signal => [signal.data[x * 2], signal.data[x * 2 + 1]]);
       console.log(JSON.stringify(out));
+    });
+
+    gl.canvas.addEventListener('mousewheel', (ev: any) => {
+      const dy: number = ev.deltaY;
+      const scale = dy * 0.0005;
+      this.scale = [this.scale[0] + scale, this.scale[1] + scale];
     });
   }
 
